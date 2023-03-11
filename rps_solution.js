@@ -1,4 +1,4 @@
-console.log("Let's do this!")
+console.log("Hi!")
 
 const options = ["rock", "paper", "scissors"];
 
@@ -8,7 +8,7 @@ function getComputerChoice() {
 }
 
 function checkWinner(playerSelection, computerSelection){
-    if (playerSelection == computerSelection) {
+    if (playerSelection == computerSelection){
         return "Tie";
     } else if (
         (playerSelection == "rock" && computerSelection == "scissors") ||
@@ -23,12 +23,14 @@ function checkWinner(playerSelection, computerSelection){
 
 function playRound(playerSelection, computerSelection){
     const result = checkWinner(playerSelection, computerSelection);
-    if (result == "Tie"){
-        return `Tie!`;
-    } else if (result == "Player") {
-        return `You Win! ${playerSelection} beats ${computerSelection}!`;
-    } else {
-        return `You Lose! ${computerSelection} beats ${playerSelection}!`;
+    if(result == "Tie"){
+        return "It's a Tie!"
+    }
+    else if (result == "Player"){
+        return `You Win! ${playerSelection} beats ${computerSelection}.`
+    }
+    else {
+        return `You Lose! ${computerSelection} beats ${playerSelection}.`
     }
 }
 
@@ -49,27 +51,29 @@ function getPlayerChoice(){
 
 function game(){
     let scorePlayer = 0;
-    let scoreComputer = 0
+    let scoreComputer = 0;
+    console.log("Welcome!")
     for (let i = 0; i < 5; i++) {
         const playerSelection = getPlayerChoice();
         const computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection))
-        if(checkWinner(playerSelection, computerSelection) == "Player") {
+        console.log(playRound(playerSelection, computerSelection));
+        console.log("---------");
+        if(checkWinner(playerSelection, computerSelection) == "Player"){
             scorePlayer++;
-        }
-        else if(checkWinner(playerSelection,computerSelection) == "Computer"){
+        } 
+        else if (checkWinner(playerSelection,computerSelection) == "Computer"){
             scoreComputer++;
         }
     }
-    console.log("Game Over!")
-    if (scorePlayer == scoreComputer){
-        return console.log("It's a tie!");
-    } else if (scorePlayer > scoreComputer) {
-        return console.log("Player Wins!")
-    } else {
-        return console.log("Computer Wins!")
-    }
-
+    console.log("Game Over.")
+        if(scorePlayer > scoreComputer){
+            console.log("Player wins!");
+        } 
+        else if (scorePlayer < scoreComputer){
+            console.log("Computer wins!");
+        } else {
+            console.log("Tie");
+        }
 }
 
-game();
+game()
